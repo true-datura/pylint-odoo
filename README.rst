@@ -120,11 +120,7 @@ Enable custom checks for Odoo modules.
 Install
 -------
 
-``# pip install --upgrade git+https://github.com/oca/pylint-odoo.git``
-
-Or
-
-``# pip install --upgrade --pre pylint-odoo``
+``# pip install --upgrade git+https://github.com/tend-erp/pylint-odoo.git``
 
 Usage
 -----
