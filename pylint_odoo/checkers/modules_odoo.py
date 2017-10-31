@@ -20,6 +20,11 @@ ODOO_MSGS = {
         'missing-readme',
         settings.DESC_DFLT
     ),
+    'C%d03' % settings.BASE_OMODULE_ID: (
+        'Missing icon file. It must be located here %s',
+        'missing-icon',
+        settings.DESC_DFLT
+    ),
     'E%d01' % settings.BASE_OMODULE_ID: (
         '%s %s',
         'rst-syntax-error',
@@ -439,6 +444,16 @@ class ModuleChecker(misc.WrapperModuleChecker):
             if os.path.isfile(os.path.join(self.module_path, readme)):
                 return True
         return False
+
+    def _check_missing_icon(self):
+        """Ensure module icon exists
+        :return: If exists return True else False
+        """
+        icon_path = os.path.join(
+            self.module_path, 'static', 'description', 'icon.png'
+        )
+        self.msg_args = (icon_path,)
+        return os.path.isfile(icon_path)
 
     def _check_xml_syntax_error(self):
         """Check if xml file there is syntax error
